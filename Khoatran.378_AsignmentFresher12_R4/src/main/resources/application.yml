@@ -1,0 +1,61 @@
+---
+server:
+  port: 8080
+  contextPath: /AsignmentFresher12
+
+---
+spring:
+  profiles: local, default
+datasource:
+  sampleapp:
+    url: jdbc:mysql://dianna:3306/fresher
+    username: fresher12
+    password: 12345678
+    driverClassName: com.mysql.jdbc.Driver
+    defaultSchema:
+    maxPoolSize: 20
+    hibernate:
+      hbm2ddl.method: create-drop
+      show_sql: true
+      format_sql: true
+      dialect: org.hibernate.dialect.MySQLDialect
+      
+---    
+spring:
+  profiles: local-ifi
+datasource:
+  sampleapp:
+    url: jdbc:h2:~/test
+    username: SA
+    password:
+    driverClassName: org.h2.Driver
+    defaultSchema:
+    maxPoolSize: 10
+    hibernate:
+      hbm2ddl.method: create-drop
+      show_sql: true
+      format_sql: true
+      dialect: org.hibernate.dialect.H2Dialect
+---
+spring:
+  profiles: prod
+  data:
+    cassandra:
+      keyspace-name: fresher12_ifidb
+      contact-points: 127.0.0.1
+      port: 9042
+datasource:
+  sampleapp:
+    url: jdbc:h2:~/test
+    username: SA
+    password:
+    driverClassName: org.h2.Driver
+    defaultSchema:
+    maxPoolSize: 10
+    hibernate:
+      hbm2ddl.method: create-drop
+      show_sql: true
+      format_sql: true
+      dialect: org.hibernate.dialect.H2Dialect
+    
+    
