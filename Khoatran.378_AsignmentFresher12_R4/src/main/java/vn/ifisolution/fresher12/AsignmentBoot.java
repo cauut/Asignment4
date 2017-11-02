@@ -30,7 +30,7 @@ public class AsignmentBoot implements CommandLineRunner{
 	public void run(String... arg0) throws Exception {
 		// TODO Auto-generated method stub
 		persionalService.save(new TblPersional("khoa", new Date(new java.util.Date().getTime()), "Chuong My"));
-		projectService.save(new TblProject("Fontand", "Asignment"));
+		projectService.save(new TblProject("Fontand", "Asignment", new java.util.Date(),new java.util.Date()));
 		
 	}
 }

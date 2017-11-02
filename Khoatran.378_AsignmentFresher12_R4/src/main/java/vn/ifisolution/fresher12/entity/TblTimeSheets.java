@@ -2,11 +2,12 @@
 // Generated Oct 31, 2017 11:36:24 AM by Hibernate Tools 5.1.5.Final
 package vn.ifisolution.fresher12.entity;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,19 +25,25 @@ public class TblTimeSheets implements java.io.Serializable {
 	private Integer id;
 	private TblPersional tblPersional;
 	private TblProject tblProject;
-	private Date time;
+	private Date startDate;
+	private Date endDate;
+	private String description;
+	private String type;
 
 	public TblTimeSheets() {
 	}
 
-	public TblTimeSheets(TblPersional tblPersional, TblProject tblProject, java.sql.Date time) {
+	public TblTimeSheets(TblPersional tblPersional, TblProject tblProject, java.sql.Date startDate, java.sql.Date endDate, String description, String type) {
 		this.tblPersional = tblPersional;
 		this.tblProject = tblProject;
-		this.time = time;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.type = type;
+		this.description = description;
 	}
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
 	@Column(name = "id", unique = true, nullable = false)
 	public Integer getId() {
@@ -68,13 +75,39 @@ public class TblTimeSheets implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "time", nullable = false, length = 10)
-	public Date getTime() {
-		return this.time;
+	@Column(name = "start_date", nullable = false, length = 10)
+	public Date getStartDate() {
+		return this.startDate;
 	}
 
-	public void setTime(Date time) {
-		this.time = time;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
+	@Temporal(TemporalType.DATE)
+	@Column(name = "end_date", nullable = false, length = 10)
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+	@Column(name = "description", nullable = false, length = 255)
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	@Column(name = "type", nullable = false, length = 40)
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 
 }

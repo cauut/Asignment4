@@ -62,7 +62,7 @@ public class JpaConfigAsignment {
 					.driverClassName(dataSourceProperties.getDriverClassName())
 					.url(dataSourceProperties.getUrl())
 					.username(dataSourceProperties.getUsername())
-					.password(dataSourceProperties.getPassword())
+//					.password(dataSourceProperties.getPassword())
 					.type(HikariDataSource.class)
 					.build();
 			dataSource.setMaximumPoolSize(maxPoolSize);

@@ -59,9 +59,9 @@ public class RestPersionalApiController {
 	// public
 	@RequestMapping(value = "/personal/", method = RequestMethod.POST)
 	public ResponseEntity<?> saveEntity(@RequestBody TblPersional classes) {
-		if (persionalService.isExit(classes))
-			return new ResponseEntity(HttpStatus.CONFLICT);
-		else
+//		if (persionalService.isExit(classes))
+//			return new ResponseEntity(HttpStatus.CONFLICT);
+//		else
 			persionalService.save(classes);
 		return new ResponseEntity<TblPersional>(classes, HttpStatus.CREATED);
 	}

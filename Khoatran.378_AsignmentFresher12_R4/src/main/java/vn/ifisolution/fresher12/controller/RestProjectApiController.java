@@ -44,9 +44,9 @@ public class RestProjectApiController {
 	}
 	@RequestMapping(value = "/project/", method = RequestMethod.POST)
 	public ResponseEntity<?> saveEntity(@RequestBody TblProject classes) {
-		if (projectService.isExit(classes))
-			return new ResponseEntity(HttpStatus.CONFLICT);
-		else
+//		if (projectService.isExit(classes))
+//			return new ResponseEntity(HttpStatus.CONFLICT);
+//		else
 			projectService.save(classes);
 		return new ResponseEntity<TblProject>(classes, HttpStatus.CREATED);
 	}

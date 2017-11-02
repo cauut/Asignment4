@@ -1,16 +1,20 @@
 // default package
 // Generated Oct 31, 2017 11:36:24 AM by Hibernate Tools 5.1.5.Final
 package vn.ifisolution.fresher12.entity;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -23,17 +27,21 @@ public class TblProject implements java.io.Serializable {
 
 	private Integer id;
 	private String name;
+	private Date startDate;
+	private Date endDate;
 	private String description;
 	private Set<TblTimeSheets> tblTimeSheetses = new HashSet<TblTimeSheets>(0);
 
 	public TblProject() {
 	}
 
-	public TblProject(String name, String description) {
+	public TblProject(String name, String description, Date startDate, Date endDate) {
 		this.name = name;
 		this.description = description;
+		this.endDate = endDate;
+		this.startDate = startDate;
 	}
-
+	
 	public TblProject(String name, String description, Set<TblTimeSheets> tblTimeSheetses) {
 		this.name = name;
 		this.description = description;
@@ -41,7 +49,7 @@ public class TblProject implements java.io.Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	public Integer getId() {
 		return this.id;
@@ -68,6 +76,26 @@ public class TblProject implements java.io.Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "start_date", nullable = false, length = 10)
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+	@Temporal(TemporalType.DATE)
+	@Column(name = "end_date", nullable = false, length = 10)
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tblProject")
 	public Set<TblTimeSheets> getTblTimeSheetses() {
@@ -79,3 +107,4 @@ public class TblProject implements java.io.Serializable {
 	}
 
 }
+
