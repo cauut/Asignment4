@@ -48,6 +48,15 @@ public class TblPersional implements java.io.Serializable {
 		this.tblTimeSheetses = tblTimeSheetses;
 	}
 
+	public TblPersional(int i, String string, java.sql.Date date, String string2) {
+		// TODO Auto-generated constructor stub
+		this.id = i;
+		this.name = name;
+		this.birthday = birthday;
+		this.address = address;
+		this.tblTimeSheetses = tblTimeSheetses;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 

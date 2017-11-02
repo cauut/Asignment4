@@ -84,5 +84,35 @@ export class DataService {
     }
   }
 
+  //////////////////////////service for time sheet////////////////////////////////////////
+
+  getTimeSheet(){
+    return this.http.get('http://localhost:8080/AsignmentFresher12/api/personal')
+    .map(res=>res.json());
+  }
+  addTimeSheet(userObj){
+    this.http.post('http://localhost:8080/AsignmentFresher12/api/personal/',userObj).subscribe((res:Response)=>{
+      // this.isAdded=true;
+      // this.route.navigate("/");
+      });
+  }
+  editTimeSheet(personal){
+
+    const url =`${"http://localhost:8080/AsignmentFresher12/api/personal/"}/${personal.id}`;
+    this.http.put(url, JSON.stringify(personal), {headers:this.header}).toPromise()
+    .then(()=>{
+      console.log("updated");
+    });
+  }
+
+  deleteTimeSheet(id){
+    if(confirm('Are you sure???')){
+      const url =`${"http://localhost:8080/AsignmentFresher12/api/personal"}/${id}`;
+      return this.http.delete(url,{headers:this.header}).toPromise()
+      .then(()=>{
+        console.log('deleted '+ id);
+      })
+    }
+  }
 }
 

@@ -63,14 +63,14 @@ public class RestTimeSheetApi {
 	// save registration
 	@RequestMapping(value = "/timesheet/", method = RequestMethod.POST)
 	public ResponseEntity save(@RequestBody TblTimeSheets scr, UriComponentsBuilder ucBuilder) {
-		if (timeSheetsService.isExit(scr)) {
-			logger.error("Unable to create. A registration with name {} already exist", scr.toString());
-			return new ResponseEntity(new CustomErrorType(" already exist."), HttpStatus.CONFLICT);
-		}
+//		if (timeSheetsService.isExit(scr)) {
+//			logger.error("Unable to create. A registration with name {} already exist", scr.toString());
+//			return new ResponseEntity(new CustomErrorType(" already exist."), HttpStatus.CONFLICT);
+//		}
 		timeSheetsService.saveTimeSheets(scr);
 
 		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(ucBuilder.path("/api/studentclassregistration/{id}").buildAndExpand(scr.getId()).toUri());
+		headers.setLocation(ucBuilder.path("/api/timesheet/{id}").buildAndExpand(scr.getId()).toUri());
 		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 	}
 
@@ -91,6 +91,14 @@ public class RestTimeSheetApi {
 
 	@RequestMapping(value = "/timesheet/", method = RequestMethod.DELETE)
 	public ResponseEntity delete(@RequestBody TblTimeSheets studentClassRegistrations) {
+		if (timeSheetsService.isExit(studentClassRegistrations) == false)
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		else
+			timeSheetsService.delete(studentClassRegistrations);
+		return new ResponseEntity<TblTimeSheets>(studentClassRegistrations, HttpStatus.NO_CONTENT);
+	}
+	@RequestMapping(value = "/timesheet/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity deleteId(@RequestBody TblTimeSheets studentClassRegistrations) {
 		if (timeSheetsService.isExit(studentClassRegistrations) == false)
 			return new ResponseEntity(HttpStatus.NOT_FOUND);
 		else

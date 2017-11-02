@@ -46,6 +46,17 @@ public class TblProject implements java.io.Serializable {
 		this.name = name;
 		this.description = description;
 		this.tblTimeSheetses = tblTimeSheetses;
+		this.endDate = endDate;
+		this.startDate = startDate;
+	}
+
+	public TblProject(int i, String string, String string2, Date date, Date date2) {
+		// TODO Auto-generated constructor stub
+		this.id = i;
+		this.name = name;
+		this.description = description;
+		this.endDate = endDate;
+		this.startDate = startDate;
 	}
 
 	@Id

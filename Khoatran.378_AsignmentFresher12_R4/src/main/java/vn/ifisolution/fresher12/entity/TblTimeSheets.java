@@ -22,6 +22,10 @@ import javax.persistence.TemporalType;
 @Table(name = "tblTimeSheets_khoa")
 public class TblTimeSheets implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private TblPersional tblPersional;
 	private TblProject tblProject;
@@ -54,7 +58,7 @@ public class TblTimeSheets implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idPersonal", nullable = false)
 	public TblPersional getTblPersional() {
 		return this.tblPersional;
@@ -64,7 +68,7 @@ public class TblTimeSheets implements java.io.Serializable {
 		this.tblPersional = tblPersional;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idProject", nullable = false)
 	public TblProject getTblProject() {
 		return this.tblProject;
