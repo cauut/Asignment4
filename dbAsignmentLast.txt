@@ -1,0 +1,29 @@
+cqlsh:asignment5> create table tblproject(
+              ... id uuid,
+              ... name text,
+              ... startdate date,
+              ... enddate date,
+              ... description text,
+              ... type text,
+              ... primary key((id, type),name, startdate, enddate) );
+cqlsh:asignment5> create table tblpeople(
+              ... id uuid,
+              ... name text, 
+              ... birthday date,
+              ... city_address text,
+              ... street_address text,
+              ... sex text,
+              ... primary key ((id, city_address,sex), name));
+cqlsh:asignment5> create table tbltimesheets(
+              ... id uuid,
+              ... name text,
+              ... id_project uuid,
+              ... id_personal uuid,
+              ... name_personal text,
+              ... name_project text,
+              ... type text,
+              ... startdate date,
+              ... enddate date,
+              ... description text,
+              ... primary key((id, id_project, id_personal,type), name, startdate, enddate));
+
