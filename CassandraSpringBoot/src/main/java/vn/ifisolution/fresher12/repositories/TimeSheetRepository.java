@@ -11,10 +11,10 @@ import vn.ifisolution.fresher12.entity.TimeSheet;
 public interface TimeSheetRepository extends CassandraRepository<TimeSheet>{
 	
 	//find by Project Id
-	@Query("SELECT * FROM tbltimesheets where id_project = ?0 ALLOW FILTERING")
+	@Query("SELECT * FROM tbltimesheets where id_project = ?0")
 	Iterable<TimeSheet> findByProjectId(UUID idProject);
 	
-	@Query("SELECT * FROM tbltimesheets where id_personal= ?0 ALLOW FILTERING")
+	@Query("SELECT * FROM tbltimesheets where id_personal= ?0")
 	Iterable<TimeSheet> findByPersonId(UUID idPerson);
 	
 	@Modifying
