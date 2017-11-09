@@ -1,0 +1,20 @@
+---
+server:
+  port: 8080
+  contextPath: /IOT_CTHV
+---
+spring:
+  profiles: local, default
+  data:
+    cassandra:
+      keyspace-name: iot_cthv
+      contact-points: 127.0.0.1
+      port: 9042
+---
+spring:
+  profiles: prod
+  data:
+    cassandra:
+      keyspace-name: iot_cthv
+      contact-points: 127.0.0.1
+      port: 9042
